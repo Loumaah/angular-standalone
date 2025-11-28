@@ -243,3 +243,16 @@
         Aller au composant adresse
     </button>
 </div>
+
+<h2>Pipes (CommonModule)</h2>
+<p>{{ title | uppercase }}</p>
+<p>{{ today | date:'d MMM y' }}</p>
+<p>{{ today | date:'d MMM y' | uppercase }}</p>
+<p>{{ title | getchar }}</p>
+<p>{{ title | getchar:2 }}</p>
+
+<ul>
+  @for(elt of numbers | evenValue; track $index) {
+    <li>{{ elt }}</li>
+  }
+</ul>

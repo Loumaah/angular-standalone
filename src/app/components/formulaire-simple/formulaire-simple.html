@@ -1,0 +1,7 @@
+<h2>Template driven forms</h2>
+
+<div>
+  <label for="nom" class="form-label">Nom</label>
+  <input type="text" id="nom" name="nom" class="form-control" (input)="showInput($event)" [value]="nom">
+  <input type="text" disabled [value]="inputEvent()" class="form-control mt-2">
+</div>
