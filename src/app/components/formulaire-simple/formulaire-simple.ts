@@ -1,21 +1,12 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formulaire-simple',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './formulaire-simple.html',
   styleUrl: './formulaire-simple.css',
 })
 export class FormulaireSimpleComponent {
   nom = 'Doe'
-
-  inputEvent() {
-    return this.nom;
-  }
-
-  showInput(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    this.nom = inputElement.value;
-  }
-
 }
