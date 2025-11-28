@@ -8,6 +8,7 @@ import { AdresseComponent } from './components/adresse/adresse';
 import { StagiaireComponent } from './components/stagiaire/stagiaire';
 import { CalculComponent } from './components/calcul/calcul';
 import { TableauComponent } from './components/tableau/tableau';
+import { NotFoundComponent } from './components/notfound/notfound';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
@@ -15,6 +16,7 @@ export const routes: Routes = [
   {path:'about', component: AboutComponent},
   // Query params : /adresse?ville=Paris&cp=75000
   {path: 'adresse', component: AdresseComponent },
+  {path: 'address', redirectTo: 'adresse' },
   // Route params : /stagiaire/Doe/John
   {path: 'stagiaire/:nom/:prenom', component: StagiaireComponent},
   // Route et query params : /calcul/plus?a=5&b=3
@@ -22,5 +24,9 @@ export const routes: Routes = [
   { path: 'tableau/:indice', component: TableauComponent },
   {path: 'observable', component: ObservableComponent},
   {path: 'subject', component: SubjectComponent},
-  {path: 'computed', component: ComputedComponent}
+  {path: 'computed', component: ComputedComponent},
+  // À placer en dernier
+  // { path: '**', component: NotFoundComponent },
+    { path: 'not-found', component: NotFoundComponent },
+    { path: '**', redirectTo: '/not-found' },
 ];
