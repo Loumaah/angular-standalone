@@ -1,7 +1,54 @@
 <h2>Template driven forms</h2>
 
-<div>
+<!-- <div>
   <label for="nom" class="form-label">Nom</label>
   <input type="text" id="nom" name="nom" class="form-control" [(ngModel)]="nom">
   <input type="text" disabled [value]="nom" class="form-control mt-2">
 </div>
+
+<hr> -->
+
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <label for="lastname" class="form-label">Nom</label>
+  <input type="text" id="lastname" #nom="ngModel" name="lastname" class="form-control" [(ngModel)]="personne.nom" required>
+
+  @if(nom.invalid && nom.dirty) {
+    <div class="col-auto">
+    <span id="lastname" class="form-text">
+      Ce champs est requis.
+    </span>
+  </div>
+  }
+
+  <label for="firstname" class="form-label">Prénom</label>
+  <input type="text" id="firstname" #prenom="ngModel" name="firstname" class="form-control" [(ngModel)]="personne.prenom" required>
+
+  @if(prenom.invalid && prenom.dirty) {
+    <div class="col-auto">
+    <span id="firstname" class="form-text">
+      Ce champs est requis.
+    </span>
+  </div>
+  }
+
+  <label for="age" class="form-label">Âge</label>
+  <input type="number" id="age" #age="ngModel" name="age" class="form-control" [(ngModel)]="personne.age" max="120" required>
+
+  @if(age.invalid && age.dirty) {
+    <div class="col-auto">
+    <span id="age" class="form-text">
+      Ce champs est requis et doit contenir une valeur inférieure à 120.
+    </span>
+  </div>
+  }
+
+  <button class="btn btn-outline-secondary mt-2" [disabled]="form.invalid">Soumettre</button>
+</form>
+
+<ul class="list-group list-group-flush">
+  @for (p of personnes; track $index) {
+    <li class="list-group-item">
+     {{ p.prenom }} {{ p.nom }} - {{ p.age }} ans
+  </li>
+  }  
+</ul>
