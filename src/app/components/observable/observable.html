@@ -1,0 +1,9 @@
+<h2>Observable Component</h2>
+<ul>
+  @for (v of valeurs(); track $index) {
+    <li>{{ v }}</li>
+  } @empty {
+    <li>Aucune valeur</li>
+  }
+</ul>
+<p>Etat : {{ state() }}</p>

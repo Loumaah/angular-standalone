@@ -1,0 +1,12 @@
+<h2>Adresse</h2>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Ville : {{ ville }}</li>
+  <li class="list-group-item">Code postal : {{ cp }}</li>
+</ul>
+
+<p>
+    <a routerLink='/adresse' [queryParams]="{cp: '59000', ville: 'Lille'}">
+        Visitez Lille
+    </a>
+</p>

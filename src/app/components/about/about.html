@@ -1,0 +1,232 @@
+<div class="card">
+  <div class="card-body text-center">
+    <h5 class="card-title">Interpolation</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Interpoler un objet</h6>
+    <div class="card-text">
+      <p>{{ stagiaire | json }}</p>
+      <ul>
+        <li>{{ stagiaire.num }}</li>
+        <li>{{ stagiaire['nom'] }}</li>
+        <li>{{ stagiaire['prenom'] }}</li>
+      </ul>
+
+      <ul>
+        <li>{{ stagiaire2.num }}</li>
+        <li>{{ stagiaire2['nom'] }}</li>
+        <li>{{ stagiaire2['prenom'] ?? 'Prénom non défini' }}</li>
+      </ul>
+    </div>
+
+    <h6 class="card-subtitle mb-2 text-body-secondary">Interpoler un tableau</h6>
+    <div class="card-text">
+      <ul>
+        <li>{{ numbers[0] }}</li>
+        <li>{{ numbers["29"] }}</li>
+        <li>{{ numbers["2"] }}</li>
+      </ul>
+    </div>
+
+    <h6 class="card-subtitle mb-2 text-body-secondary">Interpoler une méthode (Déconseillé)</h6>
+    <div class="card-text">
+      <p>{{ afficherBonjour() }}</p>
+    </div>
+  </div>
+</div>
+  
+  <h3>Property binding</h3>
+  <p [textContent]="title"></p>
+  <p>{{ title }}</p>
+
+  <h3>Event Binding</h3>
+  <div>
+    <button (click)="alertBonjour()">
+      Dire bonjour
+    </button>
+  </div>
+
+  <h4>Exercice</h4>
+  <p>Désactiver le bouton cliqué et réactiver l’autre.</p>
+
+  <div>
+    <button (click)="flip(1)" [disabled]="disabledButton === 1">Clique-moi !</button>
+    <button (click)="flip(2)" [disabled]="disabledButton === 2">Non clique-moi !</button>
+  </div>
+
+  <h4>Correction</h4>
+  <div>
+    <button [disabled]="isDisabled" (click)="switchState()">Bouton 1</button>
+    <button [disabled]="!isDisabled" (click)="switchState()">Bouton 2</button> 
+  </div>
+
+  <h3>L'objet Event</h3>
+  <div>
+    <label for="texte">Votre texte</label>
+    <input type="text" id="texte" (input)="afficherTexte($event)">
+  </div>
+
+  <h2>Control Flow Syntax (CFS)</h2>
+  <h3>Boucle for</h3>
+  <ul>
+    @for (item of numbers; let i = $index; track i) {
+      <li>{{ $first }} : {{ $last }} : {{ $even }} : {{ $odd }} : {{ i }} : {{ item }}</li>
+    } @empty {
+      <li>Liste vide</li>
+    }
+  </ul>
+
+  <h4>Exercice</h4>
+  <p>Écrire un script Angular qui permet d'afficher dans une liste HTML les noms et prénoms de chaque stagiaire de la liste <i>stagiaires</i></p>
+  <div>
+    <ul>
+      @for (stagiaire of stagiaires; track $index) {
+        <li>{{ stagiaire.prenom }} {{ stagiaire.nom }}</li>
+      } @empty {
+        <li>Aucun stagiaire</li>
+      }
+    </ul>
+    <ul>
+      @for (elt of stagiaire | keyvalue; track $index) {
+        <li>{{ elt.key }} {{ elt.value }}</li>
+      }
+    </ul>
+  </div>
+
+  <h3>Condition avec if</h3>
+  @if (numbers[0] % 2 === 0) {
+    <p>{{ numbers[0] }} est pair</p>
+  } @else {
+    <p>{{ numbers[0] }} est impair</p>
+  }
+
+  @if (numbers[5] % 2 === 0) {
+    <p>{{ numbers[5] }} est pair</p>
+  } @else {
+    <p>{{ numbers[5] }} est impair</p>
+  }
+
+  <h4>Exercice</h4>
+  <p>Écrire un script Angular qui affiche pour chaque nombre du tableau s'il est pair ou impair.</p>
+
+  <div>
+    <ul>
+    @for (num of numbers; track $index) {
+      @if (num % 2 === 0) {
+        <li>{{ num }} est pair</li>
+      } @else {
+        <li>{{ num }} est impair</li >
+      }
+    }
+    </ul>
+  </div>
+
+  <ul>
+    @for (v of numbers; track $index) {
+    <li>
+      {{ v }} {{ v % 2 == 0 ? 'pair' : 'impair' }}
+    </li>
+    }
+  </ul>
+
+  <h4>Exercice</h4>
+  <p>Afficher pour chaque moyenne si 0 <= moyenne < 10 échec, 10 <= moyenne < 13 moyen, si 13 <= moyenne < 16 bien sinon très bien.</p>
+
+  <ul>  
+    @for (m of moyennes; track $index) {
+      @if (m < 10) {
+        <li>{{ m }} : échec</li>
+      } @else if (m < 13) {
+        <li>{{ m }} : moyen</li>
+      } @else if (m < 16) {
+        <li>{{ m }} : bien</li>
+      } @else {
+        <li>{{ m }} : très bien</li>
+      }
+  }
+  </ul>
+
+  <h3>Condition avec switch</h3>
+  <ul>
+    @for (n of numbers; track $index) {
+      <li> {{ n }}
+        @switch(n) {
+          @case (1) {
+            : un
+          }
+          @case (2) {
+            : deux
+          }
+          @case (3) {
+            : trois
+          }
+          @default {
+            : autre nombre
+          }
+        }
+      </li>
+    }
+  </ul>
+
+  <h3>Exemple avec les directives structurelles de CommonModule (Dépprécié)</h3>
+  <ul>
+    <li *ngFor="let elt of numbers">
+      {{ elt }}
+    </li>
+  </ul>
+
+  <h3>ngStyle</h3>
+  <p [ngStyle]="{color: couleur, backgroundColor: bgCouleur}">
+    {{ title }}
+  </p>
+  <p [ngStyle]="style">
+    {{ title }}
+  </p>
+
+  <h3>ngClass</h3>
+  <p [ngClass]="{ rouge : title.length > 10 }">
+    {{ title }}
+  </p>
+  <p [ngClass]="{ 
+    rouge : title.length > 10,
+    bleu : title.length <= 10,
+    gras : title.startsWith('angu')}">
+    {{ title }}
+  </p>
+  <p [ngClass]="title.length > 0 ? 'rouge' : 'bleu'">
+    {{ title }}
+  </p>
+
+  <h2>Exercice</h2>
+  <p>Afficher les nombres pairs en rouge et les nombres impair en bleu.</p>
+
+  <ul>
+    @for (n of numbers; track $index) {
+      <li [ngClass]="{ 
+        rouge : n % 2 === 0, 
+        bleu : n % 2 !== 0 }">
+        {{ n }}
+      </li>
+    }
+  </ul>
+
+  <ul>
+    @for (v of numbers; track $index) {
+      <li [ngClass]="v % 2 === 0 ? 'rouge' : 'bleu'">
+        {{ v }}
+      </li>
+    }
+  </ul>
+
+<h2>Liens avec paramètres</h2>
+<h3>ParamMap</h3>
+<p>
+    <a [routerLink]="['/stagiaire', lastname, firstname]">
+        Apprendre plus sur Mitroglou
+    </a>
+</p>
+
+<h3>QueryParamMap</h3>
+<p>
+    <a routerLink='/adresse' [queryParams]="{cp: codePostal, ville}">
+        Visitez Toulouse
+    </a>
+</p>

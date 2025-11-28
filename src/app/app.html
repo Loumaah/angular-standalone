@@ -1,5 +1,16 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}} !
-  </h1>
+<div class="container mt-5 text-center">
+ 
+  <app-header></app-header>
+  <app-menu></app-menu>
+
+<!-- // Utilisation d'un composant enfant pour les subjects
+  <app-subject></app-subject>
+  // Utilisation d'un composant enfant pour les observables 
+  <app-observable></app-observable>
+  // Utilisation d'un composant enfant pour les valeurs calculées
+  <app-computed></app-computed> -->
+
+  <!-- Permet d'afficher le composant en fonction de la route dans cette page HTML -->
+  <router-outlet></router-outlet>
+
 </div>

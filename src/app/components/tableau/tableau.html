@@ -1,0 +1,9 @@
+<h2 class="text-primary my-5">
+    Tableau
+</h2>
+<p>{{ numbers }}</p>
+<p>
+    <a [routerLink]="['/tableau', previous]">Précédent</a>
+    {{ numbers[indice] }}
+    <a [routerLink]="['/tableau', next]">Suivant</a>
+</p>
