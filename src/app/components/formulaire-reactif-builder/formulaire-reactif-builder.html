@@ -71,10 +71,24 @@
     <label for="codePostal" class="form-label">Code Postal</label>
     <input type="text" id="codePostal" formControlName="codePostal" class="form-control" >
   </div>
+  <div formArrayName="sports">
+    <h3 class="text-secondary">Sports</h3>
+    <div>
+      <button class="btn btn-outline-secondary" type="button" (click)="ajouterSport()">Ajouter un sport</button>
+    </div>
+    @for (sport of sports.controls; track sport) {
+      <label class="form-label" [for]=`sport$($index)`>Sport {{ $index + 1 }} :</label>
+      <input type="text" [id]=`sport$($index)` [formControlName]="$index">
+      <button type="button" (click)="supprimerSport($index)" class="btn">
+                <i class="fa-solid fa-trash-can text-danger"></i>
+            </button>
+    }
+  </div>
 
   <div>
   <button class="btn btn-outline-secondary" [disabled]="personneForm.invalid">Afficher</button>
 </div>
+
 </form>
 
 <ul class="list-group list-group-flush">
