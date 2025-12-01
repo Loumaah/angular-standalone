@@ -18,6 +18,7 @@ import { FormulaireSignalComponent } from './components/formulaire-signal/formul
 import { PersonneComponent } from './components/personne/personne';
 import { PereComponent } from './components/pere/pere';
 import { PrimeurComponent } from './components/primeur/primeur';
+import { ParentComponent } from './components/parent/parent';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
@@ -43,6 +44,7 @@ export const routes: Routes = [
   {path: 'personne', component: PersonneComponent},
   {path: 'pere', component: PereComponent},
   {path: 'primeur', component: PrimeurComponent},
+  {path: 'parent', component: ParentComponent},
   // À placer en dernier
   // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },
