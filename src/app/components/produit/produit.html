@@ -1,1 +1,5 @@
-<p>{{ produit().nom }}, {{ produit().prix }}€ en {{ produit().quantite }} pièces</p>
+<p>{{ produit().nom }}, {{ produit().prix }}€ en {{ produit().quantite }} pièces</p> 
+<input type="number" [(ngModel)]="quantitePanier" [max]="produit().quantite">
+<button class="btn btn-outline-primary" (click)="ajouterPanier()" [disabled]="isDisabled">
+    <i class="fa-solid fa-cart-plus"></i>
+</button>

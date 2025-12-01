@@ -1,9 +1,10 @@
 <h2 class="text-primary">Primeur / Produit</h2>
 
 <h4 class="text-secondary">Liste des produits</h4>
+<h5>Total: {{ total }}€</h5>
 
 @for(p of produits; track $index) {
-  <app-produit [produit]="p"></app-produit>
+  <app-produit [produit]="p" (sendPanier)="calculerTotal($event, $index)"></app-produit>
 }
 
 <h4 class="text-secondary">Ajouter un produit</h4>
