@@ -1,37 +1,45 @@
-<nav>
-  <ul>
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">
-      <a routerLink="">Accueil</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/about">À propos</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/observable">Observable</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/subject">Subject</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/computed">Computed</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/formulaire">Formulaire</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/calculette">Calculette</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/reactive">Formulaire Réactif</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/builder">Formulaire Réactif Builder</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/comment">Comment</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/signal">Signal Form</a>
-    </li>
-  </ul>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i style="color: tomato;" class="fa-brands fa-angular"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">
+          <a class="nav-link" aria-current="page" routerLink="">Accueil</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/about">À propos</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/observable">Observable</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/subject">Subject</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/computed">Computed</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/calculette">Calculette</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/personne">Service + HTTP</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Formulaires
+          </a>
+          <ul class="dropdown-menu">
+            <li routerLinkActive="active"><a class="dropdown-item" routerLink="/formulaire">Formulaire</a></li>
+            <li routerLinkActive="active"><a class="dropdown-item" routerLink="/reactive">Formulaire Réactif</a></li>
+            <li routerLinkActive="active"><a class="dropdown-item" routerLink="/builder">Formulaire Réactif Builder</a></li>
+            <li routerLinkActive="active"><a class="dropdown-item" routerLink="/comment">Comment</a></li>
+            <li routerLinkActive="active"><a class="dropdown-item" routerLink="/signal">Signal Form</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
