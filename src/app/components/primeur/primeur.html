@@ -1,0 +1,15 @@
+<h2 class="text-primary">Primeur / Produit</h2>
+
+<h4 class="text-secondary">Liste des produits</h4>
+
+@for(p of produits; track $index) {
+  <app-produit [produit]="p"></app-produit>
+}
+
+<h4 class="text-secondary">Ajouter un produit</h4>
+<div>
+  <input type="text" class="form-control mt-3" [(ngModel)]="nouveauProduit.nom" placeholder="Nom du produit">
+  <input type="number" class="form-control mt-3" [(ngModel)]="nouveauProduit.prix" placeholder="Prix du produit">
+  <input type="number" class="form-control mt-3" [(ngModel)]="nouveauProduit.quantite" placeholder="Quantité du produit">
+  <button class="btn btn-outline-secondary mt-3" (click)="ajouterProduit()"><i class="fa-solid fa-plus"></i></button>
+</div>

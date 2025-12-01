@@ -16,6 +16,8 @@ import { FormulaireReactifBuilderComponent } from './components/formulaire-react
 import { CommentComponent } from './components/comment/comment';
 import { FormulaireSignalComponent } from './components/formulaire-signal/formulaire-signal';
 import { PersonneComponent } from './components/personne/personne';
+import { PereComponent } from './components/pere/pere';
+import { PrimeurComponent } from './components/primeur/primeur';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
@@ -39,6 +41,8 @@ export const routes: Routes = [
   {path: 'comment', component: CommentComponent},
   {path: 'signal', component: FormulaireSignalComponent},
   {path: 'personne', component: PersonneComponent},
+  {path: 'pere', component: PereComponent},
+  {path: 'primeur', component: PrimeurComponent},
   // À placer en dernier
   // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },

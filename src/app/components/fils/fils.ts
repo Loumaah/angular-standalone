@@ -1,0 +1,15 @@
+import { Component, input, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-fils',
+  imports: [],
+  templateUrl: './fils.html',
+  styleUrl: './fils.css',
+})
+export class FilsComponent {
+  // @Input({ required: true}) ville = 'Sunnydale'
+  // @Input() ville = 'Sunnydale'
+  ville = input<string>('')
+  // ville = input.required<string>()
+
+}
