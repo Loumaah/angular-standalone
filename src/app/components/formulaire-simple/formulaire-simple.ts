@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class FormulaireSimpleComponent {
   nom = 'Doe'
 
-  personne: Personne = {}
+  personne: Personne = { nom: '', prenom: '', age: 0 }
   personnes: Personne[] = [];
 
   /*
