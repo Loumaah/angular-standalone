@@ -1,0 +1,153 @@
+<h2 class="text-secondary">Comment Form</h2>
+
+<!-- <form [formGroup]="commentForm" (ngSubmit)="addComment()">
+  <label for="nom" class="form-label">Nom</label>
+  <input type="text" id="nom" formControlName="nom" class="form-control" >
+
+  @if(nom.errors) {
+    @if(nom.errors['required']) {
+      <div class="col-auto">
+        <span id="nom" class="form-text">
+          Ce champs est requis.
+        </span>
+      </div>
+    } @else {
+      <div class="col-auto">
+        <span id="nom" class="form-text">
+          {{ nom.errors['majuscule'] }}
+        </span>
+      </div>      
+    }
+  }
+
+  <label for="prenom" class="form-label">Prénom</label>
+  <input type="text" id="prenom" formControlName="prenom" class="form-control" >
+
+  @if(prenom.errors) {
+    @if(prenom.errors['required']) {
+      <div class="col-auto">
+        <span id="prenom" class="form-text">
+          Ce champs est requis.
+        </span>
+      </div>
+    } @else {
+      <div class="col-auto">
+        <span id="prenom" class="form-text">
+          {{ prenom.errors['majuscule'] }}
+        </span>
+      </div>
+    }
+  }
+    
+      
+  <div formArrayName="commentsGroup">
+    <h4 class="text-secondary">Commentaire(s)</h4>
+    <div>
+      <button class="btn btn-outline-secondary" type="button" (click)="createComment()">Ajouter un commentaire</button>
+    </div>
+    @for (comment of commentsGroup.controls; track comment) {
+      <label for="titre" class="form-label">Titre</label>
+      <input type="text" id="titre" [formControlName]="'titre'" class="form-control" >
+
+      @if(comment.get('titre')!.invalid && comment.get('titre')!.dirty) {
+        @if(comment.get('titre')!.errors?.['required']) {
+          <div class="col-auto">
+            <span id="titre" class="form-text">
+              Ce champs est requis.
+            </span>
+          </div>
+        } 
+      }
+
+
+      <label for="categorie" class="form-label">Catégorie</label>
+      <input type="text" id="categorie" [formControlName]="'categorie'" class="form-control" >
+
+      @if(comment.get('categorie')!.invalid && comment.get('categorie')!.dirty) {
+        @if(comment.get('categorie')!.errors?.['required']) {
+          <div class="col-auto">
+            <span id="categorie" class="form-text">
+              Ce champs est requis.
+            </span>
+          </div>
+        } 
+      }
+
+      <label for="contenu" class="form-label">Contenu</label>
+      <textarea class="form-control" id="contenu" rows="3" [formControlName]="'contenu'"></textarea>
+
+      @if(comment.get('contenu')!.invalid && comment.get('contenu')!.dirty) {
+        @if(comment.get('contenu')!.errors?.['required']) {
+          <div class="col-auto">
+            <span id="contenu" class="form-text">
+              Ce champs est requis.
+            </span>
+          </div>
+        } 
+      }
+
+      <button type="button" (click)="removeComment($index)" class="btn btn-outline-danger">
+        Supprimer ce commentaire
+      </button>
+    }
+  </div>
+
+  
+
+  <div>
+  <button class="btn btn-outline-primary mt-3" [disabled]="commentForm.invalid">Ajouter</button>
+</div>
+</form>
+
+@for (c of comments; track $index) {
+<div class="card text-center mt-3">
+  <div class="card-header">
+    {{ c.prenom }} {{ c.nom }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ c.titre }}</h5>
+    <p class="card-text">{{ c.contenu }}</p>
+  </div>
+  <div class="card-footer text-body-secondary">
+    <span class="badge text-bg-info">#{{ c.categorie }}</span>
+  </div>
+</div>
+} -->
+
+<form (ngSubmit)="ajouterPersonne()" [formGroup]="personForm">
+  <input type="text" formControlName="nom" class="form-control" placeholder="Votre nom" >
+  <input type="text" formControlName="prenom" class="form-control" placeholder="Votre prénom" >
+  <div formArrayName="commentaires">
+    <h4>Commentaires</h4>
+    <div>
+      <button type="button" (click)="ajouterCommentaire()">Ajouter un commentaire</button>
+    </div>
+    <ul>
+      @for (comment of commentaires.controls; track comment) {
+        <li [formGroupName]="$index">
+          <input type="text" formControlName="titre" class="form-control" placeholder="Titre du commentaire" >
+          <input type="text" formControlName="categorie" class="form-control" placeholder="Catégorie du commentaire" >
+          <input type="text" formControlName="contenu" class="form-control" placeholder="Contenu du commentaire" >
+        </li>
+      }
+    </ul>
+  </div>
+  <div>
+    <button>Envoyer</button>
+  </div>
+</form> 
+
+<ul>
+  @for(p of persons; track $index) {
+    <li>
+      {{ p.prenom }} {{ p.nom }}
+      @for (c of p.commentaires; track $index) {
+        <div>
+          <h5>{{ c.titre }}</h5>
+          <p>{{ c.contenu }}</p>
+          <span>#{{ c.categorie }}</span>
+        </div>
+      }
+    </li>
+  }
+</ul>
