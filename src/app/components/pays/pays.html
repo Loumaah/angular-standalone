@@ -1,0 +1,12 @@
+<h2 class="text-primary">TP : Pays / Ville</h2>
+
+<div>
+  @for (v of villes; track v; let i = $index) {
+    {{ v }}
+  }
+</div>
+<div>
+  @for (v of villes; track v; let i = $index) {
+    <app-ville [(ville)]="villes[i]"  />
+  }
+</div>
