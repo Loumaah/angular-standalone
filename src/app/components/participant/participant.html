@@ -1,0 +1,15 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <!-- <h5 class="card-title">{{ participant().username }}</h5> -->
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{ participant().username }}</h6>
+  @for (m of messages; track $index) {
+    <div class="alert alert-light" role="alert">
+      <strong>{{ participant().username }} :</strong> {{ m }}
+    </div>
+  }
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Votre message..." [(ngModel)]="msg">
+      <button class="btn btn-outline-primary" (click)="envoyer()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div> 
