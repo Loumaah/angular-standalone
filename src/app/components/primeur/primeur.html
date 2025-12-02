@@ -4,7 +4,7 @@
 <h5>Total: {{ total }}€</h5>
 
 @for(p of produits; track $index) {
-  <app-produit [produit]="p" (sendPanier)="calculerTotal($event, $index)"></app-produit>
+  <app-produit [produit]="p" (sendPanier)="calculerTotal($index)"></app-produit>
 }
 
 <h4 class="text-secondary">Ajouter un produit</h4>

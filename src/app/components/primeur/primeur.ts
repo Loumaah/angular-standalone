@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, viewChildren, ViewChildren } from '@angular/core';
 import { ProduitComponent } from '../produit/produit';
 import { FormsModule } from '@angular/forms';
 import { Produit } from '../../models/produit';
@@ -10,6 +10,8 @@ import { Produit } from '../../models/produit';
   styleUrl: './primeur.css',
 })
 export class PrimeurComponent {
+
+  produitsComponent = viewChildren(ProduitComponent)
 
   nouveauProduit: Produit = { nom: '', prix: 0, quantite: 0 }
   produits: Produit[] = [
@@ -24,7 +26,8 @@ export class PrimeurComponent {
     this.nouveauProduit = { nom: '', prix: 0, quantite: 0 };
   }
 
-  calculerTotal(quantitePanier: number, index: number) {
+  calculerTotal(index: number) {
+    const quantitePanier = this.produitsComponent().at(index)?.quantitePanier as number
     this.total += this.produits[index].prix * quantitePanier;
     this.produits[index].quantite -= quantitePanier;
   }
