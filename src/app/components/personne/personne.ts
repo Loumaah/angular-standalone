@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { PersonneService } from '../../services/personne';
 import { Personne } from '../../models/personne';
 import { FormsModule } from '@angular/forms';
@@ -11,25 +11,27 @@ import { FormsModule } from '@angular/forms';
 })
 export class PersonneComponent implements OnInit {
 
-  personnes: Personne[] = []
+  personnes = signal<Personne[]>([]);
   personne: Personne = { nom: '', prenom: '', age: 0 };
 
   // constructor(private ps: PersonneService) {}
   ps = inject(PersonneService);
 
   ngOnInit(): void {
-    this.personnes = this.ps.findAll();
+    this.ps.findAll().subscribe(res => {
+      this.personnes.set(res);
+    });
   }
 
   ajouter() {
-    this.ps.save(this.personne);
-    this.personnes = this.ps.findAll();
+    this.ps.save(this.personne).subscribe(p => {
+      this.personnes.set([...this.personnes(), p]);
+    });
     this.personne = { nom: '', prenom: '', age: 0 };
   }
 
   supprimer(id: number | undefined, ind: number) {
     this.ps.remove(ind);
-    this.personnes = this.ps.findAll();
   }
 
 }
