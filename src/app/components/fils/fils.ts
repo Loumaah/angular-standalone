@@ -9,7 +9,7 @@ import { Component, input, Input } from '@angular/core';
 export class FilsComponent {
   // @Input({ required: true}) ville = 'Sunnydale'
   // @Input() ville = 'Sunnydale'
-  ville = input<string>('')
+  ville = input<string>('Lille')
   // ville = input.required<string>()
 
 }
