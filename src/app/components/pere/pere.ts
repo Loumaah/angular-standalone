@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, viewChild, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, viewChild, ViewChild, ViewChildren } from '@angular/core';
 import { FilsComponent } from "../fils/fils";
 
 @Component({
@@ -8,8 +8,10 @@ import { FilsComponent } from "../fils/fils";
   styleUrl: './pere.css',
 })
 export class PereComponent implements OnInit, AfterViewInit {
+
+  @ViewChildren(FilsComponent) fils!: QueryList<FilsComponent>;
   
-  @ViewChild(FilsComponent) fils!: FilsComponent;
+  // @ViewChild(FilsComponent) fils!: FilsComponent;
   // Angular 19
   // fils = viewChild(FilsComponent)
 
@@ -27,9 +29,14 @@ export class PereComponent implements OnInit, AfterViewInit {
     console.log(this.fils);
   }
 
-  premierEnfant() {
+  /* premierEnfant() {
     console.log(this.fils);
     console.log(this.fils.ville());
-  }
+  } */
+
+    tousLesEnfants() {
+      this.fils.forEach(f => { console.log(f.ville())});
+    }
+    
     
 }
