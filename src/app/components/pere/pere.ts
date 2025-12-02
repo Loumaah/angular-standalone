@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, QueryList, viewChild, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, viewChild, ViewChild, viewChildren, ViewChildren } from '@angular/core';
 import { FilsComponent } from "../fils/fils";
 
 @Component({
@@ -7,18 +7,20 @@ import { FilsComponent } from "../fils/fils";
   templateUrl: './pere.html',
   styleUrl: './pere.css',
 })
-export class PereComponent implements OnInit, AfterViewInit {
+export class PereComponent {
 
-  @ViewChildren(FilsComponent) fils!: QueryList<FilsComponent>;
+  // @ViewChildren(FilsComponent) fils!: QueryList<FilsComponent>;
   
   // @ViewChild(FilsComponent) fils!: FilsComponent;
   // Angular 19
   // fils = viewChild(FilsComponent)
 
+  fils = viewChildren(FilsComponent)
+
   nom = 'Bob l\'éponge'
   maVille = 'Bikini Bottom'
 
-  ngOnInit(): void {
+/*   ngOnInit(): void {
     // exécuter pendant l'initialisation du composant : Pere
     console.log(this.fils);
     
@@ -27,7 +29,7 @@ export class PereComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     // exécuter après l'initialisation de la vue du composant : Pere
     console.log(this.fils);
-  }
+  } */
 
   /* premierEnfant() {
     console.log(this.fils);
@@ -35,7 +37,7 @@ export class PereComponent implements OnInit, AfterViewInit {
   } */
 
     tousLesEnfants() {
-      this.fils.forEach(f => { console.log(f.ville())});
+      this.fils().forEach(f => { console.log(f.ville())});
     }
     
     
