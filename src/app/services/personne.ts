@@ -28,8 +28,8 @@ export class PersonneService {
     return this.http.post<Personne>(this.url, p);
   }
 
-  remove(ind: number) {
-    this.personnes.splice(ind, 1);
+  remove(id: number) {
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 
 }

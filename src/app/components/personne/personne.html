@@ -44,7 +44,7 @@
   @for (p of personnes(); track $index) {
     <li class="list-group-item">
      {{ p.prenom }} {{ p.nom }} - {{ p.age }} ans 
-      <button type="button" (click)="supprimer(p.id, $index)" class="btn">
+      <button type="button" (click)="supprimer(p.id)" class="btn">
           <i class="fa-solid fa-trash-can text-danger"></i>
         </button>
   </li>

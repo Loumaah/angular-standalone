@@ -30,8 +30,10 @@ export class PersonneComponent implements OnInit {
     this.personne = { nom: '', prenom: '', age: 0 };
   }
 
-  supprimer(id: number | undefined, ind: number) {
-    this.ps.remove(ind);
+  supprimer(id: number | undefined = 0) {
+    this.ps.remove(id).subscribe(() => {
+      this.personnes.set(this.personnes().filter(p => p.id !== id));
+    });
   }
 
 }
