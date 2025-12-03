@@ -1,0 +1,17 @@
+<h2 class="text-primary my-5">Authentification</h2>
+
+<form (ngSubmit)="login()" #form="ngForm">
+  <label for="username" class="form-label">Nom d'utilisateur</label>
+  <input type="text" id="username" name="username" class="form-control" [(ngModel)]="user.username" required>
+
+  <label for="password" class="form-label">Mot de passe</label>
+  <input type="password" id="password" name="password" class="form-control" [(ngModel)]="user.password" required>
+
+  <button class="btn btn-outline-secondary mt-2" [disabled]="form.invalid">Se connecter</button>
+</form>
+
+@if (erreur()) {
+  <div class="alert alert-danger my-5" role="alert">
+    {{ erreur() }}
+  </div>
+}

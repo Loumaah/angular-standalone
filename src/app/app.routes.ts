@@ -24,6 +24,7 @@ import { TchatComponent } from './components/interaction-module/tchat/tchat';
 import { PersonneDetailsComponent } from './components/personne-module/personne-details/personne-details';
 import { CommentComponent } from './components/formulaire-module/comment/comment';
 import { CalculetteComponent } from './components/formulaire-module/calculette/calculette';
+import { AuthComponent } from './components/auth/auth';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
@@ -55,6 +56,7 @@ export const routes: Routes = [
   {path: 'container', component: ContainerComponent},
   {path: 'tchat', component: TchatComponent},
   {path: 'personne/:id', component: PersonneDetailsComponent},
+  {path: 'auth', component: AuthComponent},
   // À placer en dernier
   // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },
