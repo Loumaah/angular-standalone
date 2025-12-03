@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-auth',
@@ -11,36 +12,26 @@ import { User } from '../../models/user';
 })
 export class AuthComponent {
 
-  user: User = { username: '', password: '' }
-  users: User[] = [
-    { username: "user", password: "user" },
-    { username: "admin", password: "admin" },
-    { username: "sadmin", password: "sadmin" }
-  ];
+  user: User = { username: '', password: '', grantType: 'PASSWORD' }
   erreur = signal<string | null>(null);
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router, 
+    private authService: AuthService
+  ) {}
 
   login() {
-    const foundUser = this.users.find(
-      u => u.username === this.user.username && 
-      u.password === this.user.password
-    );
-
-    if (foundUser) {
-      this.erreur.set(null);
-      localStorage.setItem('user', JSON.stringify(foundUser));
-      this.router.navigate(['/personne']);
-    } else {
-      this.erreur.set('Identifiants incorrects.');
-    }
-
-    // Correction Achref
-    /* if (this.users.some(u => u.password == this.user.password && u.username == this.user.username)) {
-      this.router.navigateByUrl('/primeur')
-
-    } else {
-      this.erreur.set("Identifiants incorrects")
-    } */
+    this.authService.findUserByUsernameAndPassword(this.user).subscribe({
+      next: (res) => {
+        console.log(res);        
+        localStorage.setItem('tokens', JSON.stringify(res));
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this.router.navigateByUrl('/personne');
+      },
+      error: (err) => {
+        console.error(err);
+        this.erreur.set('Identifiants incorrects.');
+      }
+    })
   }
 }
