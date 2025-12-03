@@ -24,8 +24,16 @@ export class PersonneService {
     return this.http.get<Personne[]>(this.url);
   }
 
+  findById(id: number): Observable<Personne> {
+    return this.http.get<Personne>(`${this.url}/${id}`);
+  }
+
   save(p: Personne) {
     return this.http.post<Personne>(this.url, p);
+  }
+
+  update(id:number, p: Personne): Observable<Personne> {
+    return this.http.put<Personne>(`${this.url}/${id}`, p);
   }
 
   remove(id: number) {

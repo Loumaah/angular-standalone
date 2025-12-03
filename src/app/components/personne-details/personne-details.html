@@ -1,0 +1,6 @@
+<h2 class="text-primary">Informations sur {{ personne().prenom }} {{ personne().nom }}</h2>
+
+<app-personne-form 
+[personne]="personne()" 
+label="Modifier"
+(onSubmit)="modifier($event)" />

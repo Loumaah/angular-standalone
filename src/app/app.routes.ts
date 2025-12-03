@@ -23,6 +23,7 @@ import { ClavierComponent } from './components/clavier/clavier';
 import { PaysComponent } from './components/pays/pays';
 import { ContainerComponent } from './components/container/container';
 import { TchatComponent } from './components/tchat/tchat';
+import { PersonneDetailsComponent } from './components/personne-details/personne-details';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
@@ -53,6 +54,7 @@ export const routes: Routes = [
   {path: 'pays', component: PaysComponent},
   {path: 'container', component: ContainerComponent},
   {path: 'tchat', component: TchatComponent},
+  {path: 'personne/:id', component: PersonneDetailsComponent},
   // À placer en dernier
   // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },
