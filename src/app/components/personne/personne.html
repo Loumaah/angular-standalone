@@ -3,9 +3,9 @@
 <h3 class="text-secondary my-3">Ajouter une nouvelle personne</h3>
 
 <app-personne-form 
-[personne]="personne" 
+[(personne)]="personne" 
 label="Ajouter" 
-(onSubmit)="ajouter($event)" />
+(onSubmit)="ajouter()" />
 
 <h3 class="text-secondary my-3">Liste des personnes</h3>
 <ul class="list-group list-group-flush">

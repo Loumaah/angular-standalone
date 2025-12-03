@@ -1,4 +1,4 @@
-import { Component, input, OnInit, signal } from '@angular/core';
+import { Component, input, OnInit, signal, viewChild } from '@angular/core';
 import { Personne } from '../../models/personne';
 import { PersonneService } from '../../services/personne';
 import { FormsModule } from '@angular/forms';
@@ -14,19 +14,22 @@ import { PersonneFormComponent } from '../personne-form/personne-form';
 export class PersonneDetailsComponent implements OnInit {
 
   id = input.required<number>();
-  personne = signal<Personne>({ nom: '', prenom: '', age: 0 });
+  personne= signal<Personne>({ nom: '', prenom: '', age: 0 });
+  personneForm = viewChild.required(PersonneFormComponent);
 
-  constructor(private personneService: PersonneService, private router: Router) {}
+  constructor(
+    private personneService: 
+    PersonneService, private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.personneService.findById(this.id()).subscribe(p => {
-      console.log(p);
       this.personne.set(p);
     });
   }
 
-  modifier(p: Personne) {
-    this.personneService.update(this.id(), p).subscribe(() => {
+  modifier() {
+    this.personneService.update(this.id(), this.personneForm().personne()).subscribe(() => {
       this.router.navigateByUrl('/personne');
     });
   }
