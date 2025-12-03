@@ -2,42 +2,35 @@ import { Injectable } from '@angular/core';
 import { Personne } from '../models/personne';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonneService {
+  private url: string
 
-  private url = `http://localhost:8080/ws/personnes`
-  private personnes: Personne[] = [];
-
-  constructor(private http: HttpClient) {
-    this.personnes = [
-      {id: 1, nom: "Wick", prenom: "John", age: 45},
-      {id: 2, nom: "Doe", prenom: "Jane", age: 30},
-      {id: 3, nom: "Smith", prenom: "Will", age: 50},
-      {id: 4, nom: "Drucker", prenom: "Michel", age: 153}
-    ]
-  }
+  constructor(private http: HttpClient) { 
+    this.url = environment.BACKEND_URL + '/personnes'
+   }
 
   findAll(): Observable<Personne[]> {
-    return this.http.get<Personne[]>(this.url);
+    return this.http.get<Personne[]>(this.url)
   }
 
   findById(id: number): Observable<Personne> {
-    return this.http.get<Personne>(`${this.url}/${id}`);
+    return this.http.get<Personne>(`${this.url}/${id}`)
   }
 
-  save(p: Personne) {
-    return this.http.post<Personne>(this.url, p);
+  save(p: Personne): Observable<Personne> {
+    return this.http.post<Personne>(this.url, p)
   }
 
-  update(id:number, p: Personne): Observable<Personne> {
-    return this.http.put<Personne>(`${this.url}/${id}`, p);
+  update(id: number, p: Personne): Observable<Personne> {
+    return this.http.put<Personne>(`${this.url}/${id}`, p)
   }
 
   remove(id: number) {
-    return this.http.delete<void>(`${this.url}/${id}`);
+    return this.http.delete<void>(`${this.url}/${id}`)
   }
-
 }

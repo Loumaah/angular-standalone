@@ -10,7 +10,6 @@ import { CalculComponent } from './components/routage-module/calcul/calcul';
 import { TableauComponent } from './components/routage-module/tableau/tableau';
 import { NotFoundComponent } from './components/notfound/notfound';
 import { FormulaireSimpleComponent } from './components/formulaire-module/formulaire-simple/formulaire-simple';
-import { CalculetteComponent } from './components/formulaire-module/calculette/calculette';
 import { FormulaireReactifComponent } from './components/formulaire-module/formulaire-reactif/formulaire-reactif';
 import { FormulaireReactifBuilderComponent } from './components/formulaire-module/formulaire-reactif-builder/formulaire-reactif-builder';
 import { FormulaireSignalComponent } from './components/formulaire-module/formulaire-signal/formulaire-signal';
@@ -24,6 +23,7 @@ import { ContainerComponent } from './components/interaction-module/container/co
 import { TchatComponent } from './components/interaction-module/tchat/tchat';
 import { PersonneDetailsComponent } from './components/personne-module/personne-details/personne-details';
 import { CommentComponent } from './components/formulaire-module/comment/comment';
+import { CalculetteComponent } from './components/formulaire-module/calculette/calculette';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
