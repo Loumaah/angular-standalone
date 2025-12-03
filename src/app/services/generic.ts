@@ -1,14 +1,22 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment.development";
+import { User } from "../models/user";
 
 export abstract class GenericService<T> {
+    private headers: HttpHeaders
+
     constructor(
         protected http: HttpClient,
         protected path: string
-    ) { }
+    ) {
+        const user: User = JSON.parse(localStorage.getItem('user') ?? '');
+        const authorization = btoa(`${user.username}:${user.password}`)
+        this.headers = new HttpHeaders().set('Authorization', `Basic ${authorization}`)
+     }
+
     findAll(): Observable<T[]> {
-        return this.http.get<T[]>(environment.BACKEND_URL + this.path)
+        return this.http.get<T[]>(environment.BACKEND_URL + this.path, { headers: this.headers })
     }
 
     findById(id: number): Observable<T> {

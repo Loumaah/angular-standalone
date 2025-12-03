@@ -26,12 +26,21 @@ export class AuthComponent {
       u => u.username === this.user.username && 
       u.password === this.user.password
     );
-    
+
     if (foundUser) {
       this.erreur.set(null);
-      this.router.navigate(['/primeur']);
+      localStorage.setItem('user', JSON.stringify(foundUser));
+      this.router.navigate(['/personne']);
     } else {
       this.erreur.set('Identifiants incorrects.');
     }
+
+    // Correction Achref
+    /* if (this.users.some(u => u.password == this.user.password && u.username == this.user.username)) {
+      this.router.navigateByUrl('/primeur')
+
+    } else {
+      this.erreur.set("Identifiants incorrects")
+    } */
   }
 }

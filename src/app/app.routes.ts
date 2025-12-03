@@ -25,6 +25,7 @@ import { PersonneDetailsComponent } from './components/personne-module/personne-
 import { CommentComponent } from './components/formulaire-module/comment/comment';
 import { CalculetteComponent } from './components/formulaire-module/calculette/calculette';
 import { AuthComponent } from './components/auth/auth';
+import { authGuard } from './guards/auth-guard';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
@@ -47,7 +48,7 @@ export const routes: Routes = [
   {path: 'builder', component: FormulaireReactifBuilderComponent},
   {path: 'comment', component: CommentComponent},
   {path: 'signal', component: FormulaireSignalComponent},
-  {path: 'personne', component: PersonneComponent},
+  {path: 'personne', component: PersonneComponent, canActivate: [authGuard]},
   {path: 'pere', component: PereComponent},
   {path: 'primeur', component: PrimeurComponent},
   {path: 'parent', component: ParentComponent},
@@ -55,7 +56,7 @@ export const routes: Routes = [
   {path: 'pays', component: PaysComponent},
   {path: 'container', component: ContainerComponent},
   {path: 'tchat', component: TchatComponent},
-  {path: 'personne/:id', component: PersonneDetailsComponent},
+  {path: 'personne/:id', component: PersonneDetailsComponent, canActivate: [authGuard]},
   {path: 'auth', component: AuthComponent},
   // À placer en dernier
   // { path: '**', component: NotFoundComponent },
