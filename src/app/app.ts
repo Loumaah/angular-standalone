@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/shared-module/header/header';
   selector: 'app-root', // La balise à utiliser pour ce composant  
   imports: [
     RouterOutlet,
-    HeaderComponent,
     MenuComponent
 ], 
   templateUrl: './app.html',

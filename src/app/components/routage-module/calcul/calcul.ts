@@ -38,52 +38,20 @@ export class CalculComponent implements OnInit {
         } else if (!this.operators.has(this.op)) {
           this.erreur = "Opérateur invalide"
         } else {
-          this.result = eval(`${this.a} ${this.operatorSymbol} ${this.b}`)
+          this.result = calculer(this.a, this.b, this.operatorSymbol)
         }
       })
 
   }
+}
 
-  /* ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.op = params.get('op') ?? ''
-      this.operatorSymbol = this.operators.get(this.op)
-
-      this.route.queryParamMap.subscribe(queries => {
-        this.a = Number(queries.get('a'))
-        this.b = Number(queries.get('b'))
-
-        if (isNaN(this.a) || isNaN(this.b)) {
-          this.erreur = "Les deux paramètres doivent être de type numérique"
-        } else if (!this.operators.has(this.op)) {
-          this.erreur = "Opérateur invalide"
-        } else {
-          this.result = eval(`${this.a} ${this.operatorSymbol} ${this.b}`)
-        }
-      })
-    }) */
-        
-
-      /* switch(this.op) {
-        case 'plus':
-          this.op = '+';
-          this.result = this.a + this.b;
-          break;
-        case 'moins':
-          this.op = '-';
-          this.result = this.a - this.b;
-          break;
-        case 'fois':
-          this.op = '*';
-          this.result = this.a * this.b;
-          break;
-        case 'div':
-          this.op = '/';
-          this.result = this.b !== 0 ? this.a / this.b : 0;
-          break;
-        default:
-          this.result = 0;
-      } */
+function calculer(val1: number, val2: number, op: string = '+'): number {
+  switch (op) {
+    case '+': return val1 + val2;
+    case '-': return val1 - val2;
+    case '/': return val1 / val2;
+    default: return val1 * val2;
+  }
 }
 
 
