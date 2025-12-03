@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Person } from '../../models/person';
+import { Person } from '../../../models/person';
 
 @Component({
   selector: 'app-comment',

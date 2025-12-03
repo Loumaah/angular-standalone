@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ParticipantComponent } from '../participant/participant';
-import { MessageService } from '../../services/message';
+import { MessageService } from '../../../services/message';
 import { FormsModule } from '@angular/forms';
-import { Participant } from '../../models/participant';
+import { Participant } from '../../../models/participant';
 
 @Component({
   selector: 'app-tchat',

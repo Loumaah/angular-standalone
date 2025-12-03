@@ -1,7 +1,7 @@
 import { Component, QueryList, viewChildren, ViewChildren } from '@angular/core';
 import { ProduitComponent } from '../produit/produit';
 import { FormsModule } from '@angular/forms';
-import { Produit } from '../../models/produit';
+import { Produit } from '../../../models/produit';
 
 @Component({
   selector: 'app-primeur',

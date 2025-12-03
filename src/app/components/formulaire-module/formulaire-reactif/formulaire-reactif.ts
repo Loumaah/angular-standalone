@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
-import { Personne } from '../../models/personne';
-import { checkNomValidator } from '../../validators/string-validators';
+import { checkNomValidator } from '../../../validators/string-validators';
+import { Personne } from '../../../models/personne';
 
 @Component({
   selector: 'app-formulaire-reactif',

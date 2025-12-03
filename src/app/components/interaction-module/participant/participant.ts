@@ -1,7 +1,7 @@
 import { Component, input, OnDestroy, OnInit } from '@angular/core';
-import { MessageService } from '../../services/message';
+import { MessageService } from '../../../services/message';
 import { Subscription } from 'rxjs';
-import { Participant } from '../../models/participant';
+import { Participant } from '../../../models/participant';
 import { FormsModule } from '@angular/forms';
 
 @Component({

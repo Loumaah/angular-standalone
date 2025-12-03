@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { Personne } from '../../models/personne';
 import { form, Field } from '@angular/forms/signals';
 import { FormsModule } from '@angular/forms';
+import { Personne } from '../../../models/personne';
 
 @Component({
   selector: 'app-formulaire-signal',

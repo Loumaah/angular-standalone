@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MessageService } from '../../services/message';
+import { MessageService } from '../../../services/message';
 
 @Component({
   selector: 'app-second',
