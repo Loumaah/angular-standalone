@@ -1,6 +1,8 @@
 import { Component, input, output } from '@angular/core';
 import { Produit } from '../../../models/produit';
 import { FormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { add } from '../../../store/cart.action';
 
 @Component({
   selector: 'app-produit',
@@ -16,8 +18,11 @@ export class ProduitComponent {
   sendPanier = output<number>()
   isDisabled = false
 
+  constructor(private store: Store) {}
+
   ajouterPanier() {
     if(this.quantitePanier > 0 && this.quantitePanier <= this.produit().quantite) {
+      this.store.dispatch(add({ lc: { produit: this.produit(), qteReserve: this.quantitePanier } }))
       this.sendPanier.emit(this.quantitePanier)
       this.isDisabled = true
     } else {

@@ -27,6 +27,7 @@ import { CalculetteComponent } from './components/formulaire-module/calculette/c
 import { AuthComponent } from './components/auth/auth';
 import { authGuard } from './guards/auth-guard';
 import { CompteurComponent } from './components/interaction-module/compteur/compteur';
+import { PanierComponent } from './components/interaction-module/panier/panier';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
@@ -59,6 +60,7 @@ export const routes: Routes = [
   {path: 'tchat', component: TchatComponent},
   {path: 'personne/:id', component: PersonneDetailsComponent, canActivate: [authGuard]},
   {path: 'auth', component: AuthComponent},
+  {path: 'panier', component: PanierComponent}, 
   // À placer en dernier
   // { path: '**', component: NotFoundComponent },
     { path: 'not-found', component: NotFoundComponent },

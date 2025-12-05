@@ -1,0 +1,16 @@
+<h2 class="text-primary">Panier</h2>
+
+<div>
+@for (item of lignesCommandes; track $index) {  
+    <h4 class="text-secondary my-3">{{ item.produit.nom }} : {{ item.produit.prix }}€</h4>
+
+    <div class="btn-group" role="group" aria-label="Compteur">
+      <button type="button" class="btn btn-primary" (click)="decrementer(item.produit.nom)"><i class="fa-solid fa-minus"></i></button>
+      <span class="btn btn-outline-primary">{{ item.qteReserve }}</span>
+      <button type="button" class="btn btn-primary" (click)="incrementer(item.produit.nom)" [disabled]="item.qteReserve >= item.produit.quantite"><i class="fa-solid fa-plus"></i></button>
+      <button class="btn btn-danger" (click)="supprimer(item.produit.nom)">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+  }
+</div>
