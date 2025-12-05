@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth';
+import { LoginLogoutService } from '../../services/login-logout';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +18,8 @@ export class AuthComponent {
 
   constructor(
     private router: Router, 
-    private authService: AuthService
+    private authService: AuthService,
+    private logService: LoginLogoutService
   ) {}
 
   login() {
@@ -26,6 +28,7 @@ export class AuthComponent {
         console.log(res);        
         localStorage.setItem('tokens', JSON.stringify(res));
         localStorage.setItem('user', JSON.stringify(this.user));
+        this.logService.isConnected(true)
         this.router.navigateByUrl('/personne');
       },
       error: (err) => {
