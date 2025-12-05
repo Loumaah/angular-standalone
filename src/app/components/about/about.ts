@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { GetCharPipe } from '../../pipes/get-char-pipe';
 import { EvenValuePipe } from '../../pipes/even-value-pipe';
+import { CompteurComponent } from '../interaction-module/compteur/compteur';
 
 @Component({
   selector: 'app-about',
   imports: [CommonModule, // CommonModule pour les pipes / directives Angular courantes / de bases
   RouterLink,
   GetCharPipe,
-  EvenValuePipe],
+  EvenValuePipe,
+  CompteurComponent],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })

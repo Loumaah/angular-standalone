@@ -26,6 +26,7 @@ import { CommentComponent } from './components/formulaire-module/comment/comment
 import { CalculetteComponent } from './components/formulaire-module/calculette/calculette';
 import { AuthComponent } from './components/auth/auth';
 import { authGuard } from './guards/auth-guard';
+import { CompteurComponent } from './components/interaction-module/compteur/compteur';
 
 // Ici on définit les routes de nos composants
 export const routes: Routes = [
